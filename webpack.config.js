@@ -1,6 +1,10 @@
+const webpack = require('webpack');
+
 module.exports = {
   entry: [
-    './src/index.js'
+    './src/index.js',
+    'webpack/hot/dev-server',
+    'webpack-dev-server/client?http://kesuskim.erclab.kr/'
   ],
   output: {
     path: __dirname,
@@ -21,6 +25,10 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    contentBase: './'
-  }
+    contentBase: './',
+    port: 5368
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ]
 };
